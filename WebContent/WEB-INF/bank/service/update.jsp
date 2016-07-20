@@ -3,7 +3,9 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
-	<title>한빛아카데미</title>
-<link rel="stylesheet" href="${css}/global.css" />
+	<title>Document</title>
 </head>
 <body>
+	
+</body>
+</html>

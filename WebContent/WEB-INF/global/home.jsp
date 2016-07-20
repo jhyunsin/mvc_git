@@ -6,3 +6,5 @@
 		<h2>서비스를 이용하시려면 회원가입을 하세요</h2>
 
 		</div>
+<jsp:include page="footer.jsp"/>
+<jsp:include page="end.jsp"/> 
