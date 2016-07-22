@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${css}/member.css" />
+<link rel="stylesheet" href="${css}/global.css" />
 <style>
 iframe.ifrm{border:none;width: 400px; height:400px}
 </style>
@@ -16,11 +16,11 @@ iframe.ifrm{border:none;width: 400px; height:400px}
 
 
 <h1>정보검색</h1>
-<iframe src="image.jsp" class="ifrm" style="border:none;"></iframe>
-<a href="${context}/member/member_controller.jsp"><br /><br />
+<iframe src="${context}/member.do?page=image" class="ifrm" style="border:none;"></iframe>
+<a href="${context}/member/content.do"><br /><br />
 <img src="${img}/member.png" alt="member" style="width:30px" /></a>
 
-<a href="${context}/index.jsp">
+<a href="${context}/index.do">
 		<img src="${img}/home.png" alt="member" style="width:30px" />
 		</a>
 

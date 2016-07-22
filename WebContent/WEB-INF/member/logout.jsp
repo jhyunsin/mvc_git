@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
-<link rel="stylesheet" href="${context}/css/member.css" />
+<link rel="stylesheet" href="${css}/global.css" />
 </head>
 <body>
 <div class="box">

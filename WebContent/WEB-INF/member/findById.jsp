@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${context}%>/css/member.css" />
+<link rel="stylesheet" href="${css}/global.css" />
 <style>
 body {
 	background-color: yellow;

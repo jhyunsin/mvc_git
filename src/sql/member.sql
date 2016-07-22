@@ -19,7 +19,7 @@ values('you','1','유관순','2014-07-01','010701-4','you@test.com','you.jpg');
 insert into member(id,pw,name,reg_date,ssn,email,profile_img)
 values('hong2','1','홍길동','2015-07-01','301201-1','hoing2@test.com','hong2.jpg');
 insert into member(id,pw,name,reg_date,ssn,email,profile_img)
-values('hong3','1','홍길동','2015-07-01','501201-1','hong3@test.com','hong3.jpg');
+values('con','1','연결성공','2015-07-01','501201-1','con@test.com','con.jpg');
 insert into member(id,pw,name,reg_date,ssn,email,profile_img)
 values('choi','1','최진실','2015-07-01','501201-1','choi@test.com','choi.jpg');
 

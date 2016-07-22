@@ -2,12 +2,13 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8" />
-	<title>Document</title>
+<meta charset="UTF-8" />
+<title>Document</title>
 </head>
 <body>
-<form action="${context}/home.do">
+	<%-- <form action="${context}/home.do">
 	<input type="submit" value="홈으로" />
-</form>
+</form> --%>
+	<a href="${context}/home.do">홈으로</a>
 </body>
 </html>

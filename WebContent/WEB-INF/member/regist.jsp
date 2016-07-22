@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:include page="../../global/top.jsp"/>
-<jsp:include page="../../global/header.jsp"/>
+<jsp:include page="../global/top.jsp"/>
+
 	<div class="box">
-	<form action="${context}/member/result/regist_result.jsp" method="post">  
+	<form action="${context}/member.do" method="post">  
 	<span class="meta">	이름  </span><input type="text" name="name"/><br/>
 	<span class="meta">	ID </span> <input type="text" name="id"/><br/>
 	<span class="meta">	비밀번호 </span> <input type="text" name="pw"/><br/>
@@ -24,10 +24,13 @@
 		<input type="checkbox" name="subject" value="delphi"/>델파이
 		<input type="checkbox" name="subject" value="html"/>HTML
 		<br/><br/>
+		<input type="hidden" name = "action" value="regist"/>
+		<input type="hidden" name = "directory" value="member"/>
+		<input type="hidden" name = "page" value="login"/>
 		<input type="submit"  value="회원가입"/>
 		<input type="reset"  value="취소"/>
 	</form>
 
 	</div>
-<jsp:include page="../../global/footer.jsp"/>
-<jsp:include page="../../global/end.jsp"/>
+<jsp:include page="../global/footer.jsp"/>
+<jsp:include page="../global/end.jsp"/>

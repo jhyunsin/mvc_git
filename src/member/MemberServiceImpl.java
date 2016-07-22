@@ -33,7 +33,7 @@ public class MemberServiceImpl implements MemberService {
 		if (result == 1) {
 			msg = "회원가입축하";
 		} else {
-			msg = "회원가입실패";
+			msg = "";
 		}
 
 		return msg;
