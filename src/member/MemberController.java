@@ -75,8 +75,8 @@ public class MemberController extends HttpServlet {
 		case "update":
 			System.out.println("업데이트 진입");
 			
-//			request.setAttribute("update", service.update());
-//			;
+			
+
 			
 			
 			
@@ -84,6 +84,10 @@ public class MemberController extends HttpServlet {
 			
 			break;
 		case "delete":
+			member.setId(service.show().getId());
+			member.setPw(request.getParameter("pw"));
+			System.out.println(member.getPw());
+			service.delete(member);
 			
 			break;
 		case "detail":

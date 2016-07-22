@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="member.MemberServiceImpl"%>
-<%@page import="member.MemberService" %>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,15 +9,20 @@
 <link rel="stylesheet" href="${css}/global.css" />
 </head>
 <body>
-<% MemberService service = MemberServiceImpl.getInstance(); %>
+
 <div class="box">
 <embed src="${context}/img/star.gif">
 <h1>탈퇴 페이지</h1>
 
-<form action="${context}/member/result/delete_result.jsp" method="post">  
-	<input type="hidden" name="id" value = "<%=service.show().getId() %>"/>
-	<span class="meta">	PW </span> <input type="text" name="pw"/><br/>
+<form action="${context}/member.do" method="post">  
+	<input type="hidden" name="id" value = "${delete.id} }"/>
+	<span class="meta">PW</span> <input type="text" name="pw"/><br/>
+
 	<p></p><br />
+   <input type="hidden" name = "action" value="delete"/>
+	<input type="hidden" name = "directory" value="member"/>
+	<input type="hidden" name = "page" value="main"/>
+
 
 <a href="${context}/member/member_controller.jsp">
 <img src="${img}/member.png" alt="member" style="width:30px" /></a>
