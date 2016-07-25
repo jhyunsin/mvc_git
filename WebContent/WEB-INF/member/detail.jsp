@@ -1,21 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>상세보기</title>
-<link rel="stylesheet" href="${css}/global.css" />
-<style>
-#member_detail{border: 1px solid gray;width:100%;height:400px;margin:0 auto; border-collapse: collapse;}
-#member_detail tr{border: 1px solid gray;hetigh:20%}
-#member_detail tr td{border: 1px solid gray;}
-.font_bold{font-weght:bold;}
-.bg_color_yellow{background-color: yellow}
-</style>
-</head>
-<body>
-<!-- //id, name, ssn, birth, regDate, gender, proImg -->
+<jsp:include page="../global/top.jsp"/>
+<jsp:include page="../global/header.jsp"/>
+<jsp:include page="../global/navi.jsp"/>
 <div class="box">
 		<h1>회원상세정보</h1>
 	
@@ -67,5 +54,5 @@
 		</a>
 
 	</div>
-</body>
-</html>
+<jsp:include page="../global/footer.jsp"/>
+<jsp:include page="../global/end.jsp"/>

@@ -8,7 +8,6 @@
 	<br/><br/><br/>
 	<input type="hidden" name = "action" value="login"/>
 	<input type="hidden" name = "directory" value="global"/>
-	<input type="hidden" name = "page" value="main"/>
 	<input type="submit"  value="로그인"/>
 	<input type="reset"  value="취소"/>
 </form>

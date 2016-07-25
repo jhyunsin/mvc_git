@@ -27,15 +27,19 @@ public class MemberServiceImpl implements MemberService {
 	public String regist(MemberBean bean) {
 		// 1등록
 		String msg = "";
-//		String sql = "insert into member(id,pw,name,reg_date,ssn)" + "values('" + mem.getId() + "','" + mem.getPw()
-//				+ "','" + mem.getName() + "','" + mem.getRegDate() + "','" + mem.getSsn() + "')";
-		int result = dao.insert(bean);
-		if (result == 1) {
-			msg = "회원가입축하";
-		} else {
-			msg = "";
+		MemberBean temp = this.findById(bean.getId());
+		if (temp==null) {
+			System.out.println(bean.getId()+ "가 존재하지 않음,가입가능한 ID");
+			int result = dao.insert(bean);
+			if (result == 1) {
+			msg = "success";
+			 } else {
+			msg = "fail";
+	      	}
+		}else{
+			System.out.println(bean.getId()+ "가 존재함 ,가입 불가한 ID");
+			msg = "fail";
 		}
-
 		return msg;
 	}
 
@@ -51,6 +55,9 @@ public class MemberServiceImpl implements MemberService {
 		int result = dao.update(mem);
 		if (result ==1) {
 			session = this.findById(mem.getId());
+		System.out.println("업데이트결과 성공");
+		}else{
+			System.out.println("업데이트결과 실패");
 		}
 	
 	
@@ -95,20 +102,18 @@ public class MemberServiceImpl implements MemberService {
 		return dao.findByname(findName);
 	}
 		
-	public String login(MemberBean member) {
+	public MemberBean login(MemberBean member) {
 		//로그인
-		String result = "";
 
 		if (dao.login(member)) {
 			session = dao.findById(member.getId());
-			result = session.getName();
 			accService.map();
 		} else {
-			result = "";
+				session.setId("fail");
 		}
 			
-		
-		return result;
+		System.out.println("서비스로그인결과 ?" +session.getId());
+		return session;
 	}
 
 	@Override
@@ -126,9 +131,6 @@ public class MemberServiceImpl implements MemberService {
 		}
 		
 	}
-	
-	
-	
 	
 	}
 

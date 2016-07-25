@@ -18,10 +18,20 @@ public class MemberBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 // 클래스 시작
 	
-	private String id, name, ssn, pw, regDate, gender, proImg, email; // 남 m 여 w
+	private String id, name, ssn, pw, regDate, gender, proImg, email,phone; // 남 m 여 w
 	private int birth;
 	
 	
+	
+	
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
 	/////////게터세터 시작
 	public String getEmail() {
 		return email;
@@ -101,7 +111,7 @@ public class MemberBean implements Serializable {
 		this.regDate = regDate;
 	}
 
-	public void setGenderAndBirth(String ssn) {
+	public void setGenderAndBirth(String ssn) {///////birth와 gender를 통합
 		String now = new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis()));
 		String[] ssnArr = ssn.split("-");
 		String[] nowArr = now.split("-");

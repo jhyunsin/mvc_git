@@ -53,24 +53,29 @@ public class MemberDAO {
 	
 	public int insert(MemberBean mem){//회원가입
 		int result = 0;
-		String sql = "insert into member(id,pw,name,reg_date,ssn,email,profile_img)"+"values(?,?,?,?,?,?,?)";
+		String sql = "insert into member(id,pw,name,reg_date,ssn,email,profile_img,phone)"+"values(?,?,?,?,?,?,?,?)";
 		
 		try {
-			pstmt = con.prepareStatement(sql);
+		pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, mem.getId());
 		pstmt.setString(2, mem.getPw());
 		pstmt.setString(3, mem.getName());
 		pstmt.setString(4, mem.getRegDate());
 		pstmt.setString(5, mem.getSsn());
 		pstmt.setString(6, mem.getEmail());
-		pstmt.setString(7, mem.getProImg());
+		pstmt.setString(7, "default.jpg");
+		pstmt.setString(8, mem.getPhone());
 		
 		result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		if (result == 1) {
+			System.out.println("DAO 가입성공");
+		} else {
+			System.out.println("DAO 가입실패");
+		}
 		return result;
 	}
 	
@@ -169,12 +174,13 @@ public class MemberDAO {
 	//findbyPK
 	public MemberBean findById(String pk) {
 		String sql = "select * from member where id=?";
-		MemberBean temp = new MemberBean();
+		MemberBean temp = null;
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, pk);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
+			temp = new MemberBean();
 			temp.setId(rs.getString("ID"));	 
 			temp.setPw(rs.getString("PW"));	 
 			temp.setName(rs.getString("NAME"));	
@@ -182,13 +188,13 @@ public class MemberDAO {
 			temp.setGenderAndBirth(rs.getString("SSN"));;
 			temp.setRegDate(rs.getString("REG_DATE"));
 			temp.setProImg(rs.getString("PROFILE_IMG"));
-			
+			temp.setPhone(rs.getString("PHONE"));
+			System.out.println("DAO에서 아이디존재 체크"+temp.getId());
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return temp;
 	}
 

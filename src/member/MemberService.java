@@ -30,7 +30,7 @@ public interface MemberService {
 
 	public List<MemberBean> findByName(String findName);
 
-	public String login(MemberBean member);
+	public MemberBean login(MemberBean member);
 
 	public int genderCount(String gender);	
 	

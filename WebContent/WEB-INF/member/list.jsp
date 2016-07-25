@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="member.MemberServiceImpl" %>
-    <%@ page import="member.MemberService" %>
-    <%@ page import="member.MemberBean" %>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -34,45 +32,27 @@ tr:nth-child(even) {
 <h1 >목록보기</h1><br/>
 	
 
-<table>
+<table id="member_list">
   <tr>
     <th>ID</th>
     <th>이름</th>
     <th>등록일</th>
     <th>생년월일</th>
+    <th>이메일</th>
+    <th>전화번호</th>
   </tr>
+  <c:forEach var="member" items="${list}">
   <tr>
-    <td>hong</td>
-    <td><a href="detail.jsp">홍길동</a></td>
-    <td>2016-07-03</td>
-    <td>901001</td>
+    <td>${member.id}</td>
+  <td><a href="${context}/member.do?action=findById&page=findById&keyword=${member.id}">
+	    	${member.name}</a></td>
+    <td>${member.regDate}</td>
+    <td>${member.birth}</td>
+    <td>${member.email}</td>
+    <td>${member.phone}</td>
   </tr>
-  <tr>
-    <td>park</td>
-    <td><a href="detail.jsp">박지성</a></td>
-    <td>2016-07-03</td>
-    <td>901001</td>
-  </tr>
-  <tr>
-    <td>jang</td>
-    <td><a href="detail.jsp">장종익</a></td>
-    <td>2016-07-03</td>
-    <td>901001</td>
-  </tr>
-  <tr>
-    <td>whan</td>
-    <td><a href="detail.jsp">황성호</a></td>
-    <td>2016-07-03</td>
-    <td>901001</td>
-  </tr>
-  <tr>
-    <td>choi</td>
-    <td><a href="detail.html">최경욱</a></td>
-    <td>2016-07-03</td>
-    <td>901001</td>
-  </tr>
-  
-</table>
+ </c:forEach>
+ </table>
 <a href="${context}/member/member_controller.jsp"><br /><br />
 <img src="${context}/img/member.png" alt="member" style="width:30px" /></a>
 <a href="${context}/index.jsp">

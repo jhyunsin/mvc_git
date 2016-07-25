@@ -54,8 +54,13 @@ ul {
 }
 .bottom{
 	
-	position : absolute;
+
 	bottom:0;
 	width : 100%;
 	height : 50px;
 }
+#member_detail{border: 1px solid gray;width:100%;height:400px;margin:0 auto; border-collapse: collapse;}
+#member_detail tr{border: 1px solid gray;hetigh:20%}
+#member_detail tr td{border: 1px solid gray;}
+.font_bold{font-weght:bold;}
+.bg_color_yellow{background-color: yellow}

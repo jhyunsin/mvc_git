@@ -6,16 +6,17 @@ create table member(
 			 reg_date varchar2(20),
 			 ssn varchar2(10),
 			 email varchar2(30),
-			 profile_img varchar2(100)
+			 profile_img varchar2(100),
+			 phone varchar2(15)
 			 );
 
 --CREATE
-insert into member(id,pw,name,reg_date,ssn,email,profile_img)
-values('lee','1','이순신','2016-07-01','800101-1','lee@test.com','lee.jpg');
-insert into member(id,pw,name,reg_date,ssn,email,profile_img)
-values('hong1','1','홍길동','2015-07-01','901201-1','hong@test.com','hong.jpg');
-insert into member(id,pw,name,reg_date,ssn,email,profile_img)
-values('you','1','유관순','2014-07-01','010701-4','you@test.com','you.jpg');
+insert into member(id,pw,name,reg_date,ssn,email,profile_img,phone)
+values('lee','1','이순신','2016-07-01','800101-1','lee@test.com','lee.jpg','010-1234-4567');
+insert into member(id,pw,name,reg_date,ssn,email,profile_img,phone)
+values('oh','1','오기로','2015-07-01','901201-1','her12201@naver.com','oh.jpg','010-2088-5756');
+insert into member(id,pw,name,reg_date,ssn,email,profile_img,phone)
+values('you','1','유관순','2014-07-01','010701-4','you@test.com','you.jpg','010-1234-4567');
 insert into member(id,pw,name,reg_date,ssn,email,profile_img)
 values('hong2','1','홍길동','2015-07-01','301201-1','hoing2@test.com','hong2.jpg');
 insert into member(id,pw,name,reg_date,ssn,email,profile_img)
@@ -31,13 +32,18 @@ select count(*) as count from member;--- count
 --UPDATE
 alter table member add email varchar2(30);
 alter table member add profile_img varchar2(100);
-update member set email='hong@test.com' where id = 'you';
+alter table member add phone varchar2(15);
+update member set email='her12201@naver.com' where id = 'lee';
+update member set pw='1' where id = 'lee';
 update member set email= id||'@test.com';
+update member set email= id||'@test.com';
+update member set phone = '010-2088-5756';
 update member set profile_img= id||'.jpg';
 update member set reg_date = '2015-03-03' where reg_date is null;
 update member set reg_date = '2013-06-29' where id = 'ogong';
 --delete
-delete from member where id = 'qqq';
+delete from member where id = 'jung';
+delete from member where id = 'lee';
 delete from member where id = 'garbage' and pw='1';
 
 drop table member1;

@@ -1,21 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="${css}/global.css" />
-<style>
-iframe.ifrm{border:none;width: 400px; height:400px}
-</style>
-
-</head>
-<body>
+<jsp:include page="../global/top.jsp"/>
+<jsp:include page="../global/header.jsp"/>
+<jsp:include page="../global/navi.jsp"/>
 <div class="box">
 
 
-<h1>정보검색</h1>
+<h1>ID검색</h1>
+<form action="${context}/member.do" method="get">
+<input type="text" name = "keyword" placeholder="검색할ID"/>
+<input type="hidden" name = "action" value = "findById"/>
+<input type="hidden" name = "page" value = "findById"/>
+<input type="submit" value = "findbyId"/>
+<input type="reset" value = "취소"/>
+</form>
+<h1>이름검색</h1>
+<form action="${context}/member.do" method="get">
+<input type="text" name = "keyword" placeholder="검색할 NAME"/>
+<input type="hidden" name = "action" value = "findByName"/>
+<input type="hidden" name = "page" value = "list"/>
+<input type="submit" value = "findbyName"/>
+<input type="reset" value = "취소"/>
+
+</form>
 <iframe src="${context}/member.do?page=image" class="ifrm" style="border:none;"></iframe>
 <a href="${context}/member/content.do"><br /><br />
 <img src="${img}/member.png" alt="member" style="width:30px" /></a>
@@ -25,5 +32,5 @@ iframe.ifrm{border:none;width: 400px; height:400px}
 		</a>
 
 </div>
-</body>
-</html>
+<jsp:include page="../global/footer.jsp"/>
+<jsp:include page="../global/end.jsp"/>
