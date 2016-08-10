@@ -24,9 +24,10 @@
 	}else{
 		member.setId(id);
 		member.setPw(pw);
-		String name = service.login(member);
-		application.log("DB다녀온 이름:"+name);
-		if(name.equals("")){
+		service.login(member);
+		
+		application.log("DB다녀온 이름:"+service.login(member).getName());
+		if(service.login(member).getId().equals("fail")){
 			%>
 			<h2>로그인 실패!!</h2>
 			<a href="${context}/member/service/login.jsp">다시 시도하기</a>
@@ -38,6 +39,7 @@
 		}
 	}
 %>
+											
 </div>	
 <jsp:include page="${context}/global/footer.jsp"/>
 <jsp:include page="${context}/global/end.jsp"/>

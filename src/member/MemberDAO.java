@@ -200,22 +200,24 @@ public class MemberDAO {
 
 	// findbynNotPK
 	public List<MemberBean> findByname(String name) {
-		String sql = "select * from member where name='" + name + "'";
-
+		String sql = "select * from member where name=?";
 		List<MemberBean> list = new ArrayList<MemberBean>();
 		try {
-			Class.forName(Constants.ORACLE_DRIVER);
-			con = DriverManager.getConnection(Constants.ORACLE_URL, Constants.USER_ID, Constants.USER_PW);
-			stmt = con.createStatement();
-			rs = stmt.executeQuery(sql);
-			while (rs.next()) {
-				MemberBean t = new MemberBean(
-						rs.getString("ID"), 
-						rs.getString("PW"), 
-						rs.getString("NAME"),
-						rs.getString("SSN"));
-				t.setRegDate(rs.getString("REG_DATE"));
-				list.add(t);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {//동명이 있을수 있으니 if 가 아닌 와일
+				MemberBean temp = new MemberBean();
+				temp.setId(rs.getString("ID"));	 
+				temp.setPw(rs.getString("PW"));	 
+				temp.setName(rs.getString("NAME"));	
+				temp.setEmail(rs.getString("EMAIL"));
+				temp.setGenderAndBirth(rs.getString("SSN"));;
+				temp.setRegDate(rs.getString("REG_DATE"));
+				temp.setProImg(rs.getString("PROFILE_IMG"));
+				temp.setPhone(rs.getString("PHONE"));
+				System.out.println("DAO에서 아이디존재 체크"+temp.getId());
+				list.add(temp);
 			}
 
 		} catch (Exception e) {

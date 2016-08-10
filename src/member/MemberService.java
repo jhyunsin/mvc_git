@@ -5,6 +5,9 @@ package member;
 
 import java.util.List;
 
+import global.CommonService;
+import subject.SubjectMember;
+
 
 
 /**
@@ -13,7 +16,7 @@ import java.util.List;
  * @file : StudentService.java
  * @story :
  */
-public interface MemberService {
+public interface MemberService extends CommonService {
 	public String regist(MemberBean bean);
 
 	public MemberBean show();
@@ -30,7 +33,7 @@ public interface MemberService {
 
 	public List<MemberBean> findByName(String findName);
 
-	public MemberBean login(MemberBean member);
+	public SubjectMember login(MemberBean member);
 
 	public int genderCount(String gender);	
 	

@@ -37,6 +37,8 @@ public class GradeDAO {/// 싱글톤은 DAO부터
 		con = DatabaseFactory.createDatabase(Vendor.ORACLE, Constants.USER_ID, Constants.USER_PW).getConnection();
 	}
 
+	
+	
 //	public int exeUpdate(String sql) {
 //		int result = 0;
 //
@@ -59,6 +61,8 @@ public class GradeDAO {/// 싱글톤은 DAO부터
 //
 //	}
 
+	
+	
 	public int insert(GradeBean bean) {
 		int result = 0;
 		String sql = "insert into grade(seq,grade,java,sql,html,javascript,id,exam_date)values(seq.nextval,?,?,?,?,?,?,?)";

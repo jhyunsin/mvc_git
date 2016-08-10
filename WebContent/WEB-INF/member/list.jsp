@@ -53,10 +53,10 @@ tr:nth-child(even) {
   </tr>
  </c:forEach>
  </table>
-<a href="${context}/member/member_controller.jsp"><br /><br />
-<img src="${context}/img/member.png" alt="member" style="width:30px" /></a>
-<a href="${context}/index.jsp">
-		<img src="${context}/img/home.png" alt="member" style="width:30px" />
+<a href="${context}/member.do"><br /><br />
+<img src="${img}/member.png" alt="member" style="width:30px" /></a>
+<a href="${context}/index.do">
+		<img src="${img}/home.png" alt="member" style="width:30px" />
 		</a>
 </div>
 </body>

@@ -34,7 +34,7 @@ alter table member add email varchar2(30);
 alter table member add profile_img varchar2(100);
 alter table member add phone varchar2(15);
 update member set email='her12201@naver.com' where id = 'lee';
-update member set pw='1' where id = 'lee';
+update member set pw='1' where id = 'ko';
 update member set email= id||'@test.com';
 update member set email= id||'@test.com';
 update member set phone = '010-2088-5756';

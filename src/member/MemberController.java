@@ -10,7 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import global.DispatcherServlet;
+import global.ParamMap;
 import global.Seperator;
+import subject.SubjectBean;
+import subject.SubjectMember;
+import subject.SubjectService;
+import subject.SubjectServiceImpl;
 
 /**
  * Servlet implementation class MemberController
@@ -35,10 +40,13 @@ public class MemberController extends HttpServlet {
 		System.out.println("===MEMBER컨트롤러진입===");
 		HttpSession session = request.getSession();////////
 		Seperator.init(request, response);
-		
 		MemberService service = MemberServiceImpl.getInstance();
+		SubjectService subjService = SubjectServiceImpl.getInstance();
+		SubjectMember sm = new SubjectMember();
 		MemberBean member = new MemberBean();
-		 switch (Seperator.command.getAction()) {
+		SubjectBean subject = new SubjectBean();
+		System.out.println("액션 ? "+Seperator.command.getAction());
+		switch (Seperator.command.getAction()) {
 		
 		 case "move" : 
 			 DispatcherServlet.send(request, response, Seperator.command);
@@ -47,7 +55,7 @@ public class MemberController extends HttpServlet {
 			
 			member.setId(request.getParameter("id"));
 			member.setPw(request.getParameter("pw"));
-			member = service.login(member);
+			sm = service.login(member);
 			if (member.getId().equals("fail")) {
 				System.out.println("컨트롤러  로긴 실패");
 				Seperator.command.setPage("login");
@@ -55,8 +63,8 @@ public class MemberController extends HttpServlet {
 				
 			}else {
 				System.out.println("컨트롤러  로긴 성공");
-				request.setAttribute("user", member);
-				session.setAttribute("user", member);//////
+				request.setAttribute("user", sm);
+				session.setAttribute("user", sm);//////
 				Seperator.command.setDirectory("global");
 				Seperator.command.setView();
 			}
@@ -71,6 +79,9 @@ public class MemberController extends HttpServlet {
 			member.setEmail(request.getParameter("email"));
 			member.setPhone(request.getParameter("phone"));
 			member.setRegDate();
+			System.out.println("전공:::"+request.getParameter("major"));
+			System.out.println("수강과목:::"+ParamMap.getValues(request, "subject").toString());
+			ParamMap.getValues(request, "subject").toString();
 			String result = service.regist(member);
 			if (result.equals("fail")) {
 				System.out.println("컨트롤러 : 회원가입실패");
@@ -78,6 +89,10 @@ public class MemberController extends HttpServlet {
 				Seperator.command.setView();
 			} else {
 				System.out.println("컨트롤러 : 회원가입성공");
+				subject.setId(request.getParameter("id"));
+				subject.setMajor(request.getParameter("major"));
+				subject.setSubjects(ParamMap.getValues(request, "subject"));
+				subjService.insert(subject);
 				Seperator.command.setDirectory(request.getParameter("directory"));
 				/*Seperator.command.setPage("login");
 				Seperator.command.setView();*/
@@ -96,7 +111,6 @@ public class MemberController extends HttpServlet {
 			DispatcherServlet.send(request, response, Seperator.command);			
 			break;
 		case "delete":
-			
 			member.setId(service.show().getId());
 			member.setPw(request.getParameter("pw"));
 			System.out.println(member.getPw());
@@ -105,7 +119,6 @@ public class MemberController extends HttpServlet {
 			break;
 		case "detail":
 			System.out.println("디테일 진입");
-			request.setAttribute("detail", service.show());
 			DispatcherServlet.send(request, response, Seperator.command);
 			
 			break;
@@ -121,19 +134,25 @@ public class MemberController extends HttpServlet {
 			Seperator.command.setView();
 			DispatcherServlet.send(request, response, Seperator.command);
 			break;
+	
+		
+		case "findById"://
+			System.out.println("findById 분기문진입");			
+			request.setAttribute("member", service.findById(request.getParameter("keyword")));
+			System.out.println("findById DB 검색 값"+service.findById(request.getParameter("keyword")));
+			DispatcherServlet.send(request, response, Seperator.command);
+		case "findByName"://
+			System.out.println("findByName 분기문진입");
+			request.setAttribute("list", service.findBy(request.getParameter("keyword")));
+			DispatcherServlet.send(request, response, Seperator.command);
+			break;
+			
+	
 		case "count":
 			System.out.println("case 카운트 진입");
 			request.setAttribute("count", service.count());
 			DispatcherServlet.send(request, response, Seperator.command);
 			break;
-		case "findById"://
-			request.setAttribute("member", service.findById(request.getParameter("keyword")));
-			DispatcherServlet.send(request, response, Seperator.command);
-		case "findByName"://
-			service.findByName(request.getParameter("keyword"));
-			DispatcherServlet.send(request, response, Seperator.command);
-			break;
-	
 		default:
 			break;
 		}

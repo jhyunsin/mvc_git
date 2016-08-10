@@ -6,7 +6,7 @@ package bank;
 import java.util.List;
 import java.util.Map;
 
-import global.CommandService;
+import global.CommonService;
 import member.MemberBean;
 
 /**
@@ -15,7 +15,7 @@ import member.MemberBean;
  * @file : AccountService.java
  * @story :
  */
-public interface AccountService extends CommandService {
+public interface AccountService extends CommonService {
 
 
 	// 1개설

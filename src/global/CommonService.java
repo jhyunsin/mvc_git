@@ -10,7 +10,7 @@ import java.util.Map;
  * @story   :
  */
 
-public interface CommandService {///파라미터값이 없어야 한다
+public interface CommonService {///파라미터값이 없어야 한다
 	public List<?> list();
 	public List<?> findBy(String keyword);
 	public int count();

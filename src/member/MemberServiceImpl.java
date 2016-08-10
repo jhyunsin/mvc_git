@@ -1,18 +1,23 @@
 package member;
 
 import java.util.List;
+import java.util.Map;
 
 import bank.AccountService;
 import bank.AccountServiceImpl;
+import subject.SubjectBean;
+import subject.SubjectDAO;
+import subject.SubjectMember;
 
 
 
 public class MemberServiceImpl implements MemberService {
 	MemberBean student = null;
 	
-	MemberDAO dao = MemberDAO.getInstance();
-	AccountService accService = AccountServiceImpl.getInstance();//// 5.6번
-	MemberBean session;/// 로긴정보만 담당하는 인스턴스변수
+	private MemberDAO dao = MemberDAO.getInstance();
+	private SubjectDAO subjDao = SubjectDAO.getInstance();
+	private AccountService accService = AccountServiceImpl.getInstance();//// 5.6번
+	private MemberBean session;               /// 로긴정보만 담당하는 인스턴스변수
 	private static MemberServiceImpl instance = new MemberServiceImpl();
 
 	public static MemberServiceImpl getInstance() {
@@ -102,18 +107,31 @@ public class MemberServiceImpl implements MemberService {
 		return dao.findByname(findName);
 	}
 		
-	public MemberBean login(MemberBean member) {
+	public SubjectMember login(MemberBean member) {
 		//로그인
-
+		SubjectMember sm = new SubjectMember();
+		SubjectBean sb = new SubjectBean();
 		if (dao.login(member)) {
 			session = dao.findById(member.getId());
 			accService.map();
+			sb = subjDao.findById(member.getId());
+			sm.setEmail(session.getEmail());
+			sm.setId(session.getId());
+			sm.setImg(session.getProImg());
+			sm.setMajor(sb.getMajor());
+			sm.setName(session.getName());
+			sm.setPhone(session.getPhone());
+			sm.setPw(session.getPw());
+			sm.setReg(session.getRegDate());
+			sm.setSsn(session.getSsn());
+			sm.setSubjects(sb.getSubjects());
+			
 		} else {
 				session.setId("fail");
 		}
 			
 		System.out.println("서비스로그인결과 ?" +session.getId());
-		return session;
+		return sm;
 	}
 
 	@Override
@@ -130,6 +148,18 @@ public class MemberServiceImpl implements MemberService {
 			session = null;
 		}
 		
+	}
+
+	@Override
+	public List<?> findBy(String keyword) {
+		// TODO Auto-generated method stub
+		return dao.findByname(keyword);
+	}
+
+	@Override
+	public Map<?, ?> map() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	}

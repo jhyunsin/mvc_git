@@ -5,12 +5,36 @@ import java.io.Serializable;
 public class GradeBean implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	private String id,seq,grade,examDate;
-	private int java, sql, html,javascript;
+	private String id,seq,grade,examDate,subject,major;
+	private int java, sql, html,javascript,score;
 	
 	public GradeBean() {
 	}
 	
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
+	public String getMajor() {
+		return major;
+	}
+
+	public void setMajor(String major) {
+		this.major = major;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
 	public GradeBean(String seq, String grade,int java,int sql, int html,int javascript, String id, String examDate){
 		this.seq = seq;
 		this.grade = grade;
