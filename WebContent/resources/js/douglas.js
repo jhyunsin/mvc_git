@@ -1,36 +1,30 @@
-var context = { /// 객체
-		name :'', /// 인스턴스 변수
-		setContext : function(context){
-			this.name = context;
-		},
-		init : function(context) { /// 메소드
-			var bt_bom = document.querySelector('#bt_bom');
-			var bt_dom = document.querySelector('#bt_dom');
-			var bt_kaup = document.querySelector('#bt_kaup');
-			var bt_creator = document.querySelector('#bt_creator');
-			
-			console.log('CONTEXT : ' + context);
-			this.setContext(context);
-			console.log('CONTEXT : '+ this.name);
+	var douglas = (function(){
+	  var context = sessionStorage.getItem("context");
+	  init = function() {
+	  var bt_bom = document.querySelector('#bt_bom');
+	  var bt_dom = document.querySelector('#bt_dom');
+	  var bt_kaup = document.querySelector('#bt_kaup');
+	  var bt_account = document.querySelector('#bt_account');
+	  
+	  
+	  bt_bom.addEventListener('click', function() {
+	   location.href = context + '/douglas.do?page=bom'; 
+	  }, false);  // 콜백 함수
+	  bt_dom.addEventListener('click', function() {
+	   location.href = context + '/douglas.do?page=dom';   
+	  }, false);
+	  bt_kaup.addEventListener('click', function() {
+	   location.href = context + '/douglas.do?page=kaup';
+	  }, false);
+	  bt_account.addEventListener('click', function() {
+	   location.href = context + '/douglas.do?page=account';
+	  }, false);
+	 };
+	 return{
+	     init : init  
+	 };
+	})();
 
-		
-			bt_bom.addEventListener('click',this.bom_go,false);
-			bt_dom.addEventListener('click',this.dom_go,false);
-			bt_kaup.addEventListener('click',this.kaup_go,false);
-			bt_creator.addEventListener('click',this.creator_go,false);
-
-		},
-		bom_go : function() {
-			location.href = this.name+'/douglas.do?page=bom';
-		},
-		dom_go : function() {
-			location.href = this.name+'/douglas.do?page=dom';
-		},
-		creator_go : function() {
-			location.href = this.name+'/douglas.do?page=creator';
-		}
-
-};
 var creator = {
 		creator_init : function() {
 			var bt_spec_show = document.querySelector('#bt_spec_show');
@@ -50,7 +44,6 @@ var member = {
 		
 };
 
-
 function account_deposit(){
 	
 	var money = document.querySelector('#money').value;
@@ -61,8 +54,6 @@ function account_withdraw(){
 	var money = document.querySelector('#money').value;
 	document.querySelector('#rest_money').innerHTML = -money ;
 }
-
-
 
 function account_spec(){
 	var account = {
