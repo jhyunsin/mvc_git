@@ -3,7 +3,6 @@
 <jsp:include page="../global/header.jsp"/>
 <jsp:include page="../global/navi.jsp"/>
 <script src="${js}/douglas.js"></script>
-<link rel="stylesheet" href="resource/js/douglas.js"/>
 <div id = "container" style="width:100%">
  <h2  style="margin:0 auto;width:250px">CREATOR 학습장</h2>
 <section class="formbox">
@@ -36,7 +35,7 @@
 </div>
  <jsp:include page = "../global/footer.jsp"/>
 <jsp:include page = "../global/end.jsp"/>
-<script>
-   window.onload=creator_init();
-   
+<link rel="stylesheet" href="${js}/douglas.js"/>
+<script type="text/javascript">
+   account.init();
 </script>

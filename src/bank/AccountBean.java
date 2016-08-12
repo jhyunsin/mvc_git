@@ -24,6 +24,8 @@ public class AccountBean implements Serializable {
 	private String pw;
 	private String id;
 	
+	
+	
 	public AccountBean() {
 		// default constructor 기본 생성자
 		// 생성자 오버로딩
@@ -53,9 +55,7 @@ public class AccountBean implements Serializable {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public void setAccountNo() {
-		this.accountNo = (int) (Math.random() * 999999)+100000; 
-	}
+	public void setAccountNo() {this.accountNo = (int) (Math.random() * 999999)+100000; }
 	public void setAccountNo(int accountNo){
 		this.accountNo = accountNo;
 	}
